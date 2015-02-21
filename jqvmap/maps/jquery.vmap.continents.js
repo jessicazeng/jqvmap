@@ -216,6 +216,9 @@ var regionMap = {
 	},
 };
 
+var currentlyZoomed = false;
+var currentRegionSelected;
+
 function getCountriesInRegion(cc) {
 	for (var regionKey in regionMap)
 	{
@@ -236,29 +239,45 @@ function getRegion(cc) {
 }
 
 function highlightRegionOfCountry (cc) {
-      var countries = getRegion(cc).countries;
-      for (countryIndex in countries)
-      {
-      	$('#vmap').vectorMap('highlight',countries[countryIndex]);
-        
-      }
-      $('#vmap').vectorMap('highlight',cc);
-      
-    }
+    //if(!currentlyZoomed){
+      	var countries = getRegion(cc).countries;
+	    for (countryIndex in countries){
+	      	$('#vmap').vectorMap('highlight',countries[countryIndex]);
+	    }
+	    $('#vmap').vectorMap('highlight',cc);
+    //} 
+}
 
 function unhighlightRegionOfCountry (cc) {
-      var countries = getRegion(cc).countries;
-      for (countryIndex in countries)
-      {
-      	$('#vmap').vectorMap('unhighlight',countries[countryIndex]);
-        
-      }
-      $('#vmap').vectorMap('unhighlight',cc);
-    }
+		var countries = getRegion(cc).countries;
+	    for (countryIndex in countries){
+	      	$('#vmap').vectorMap('unhighlight',countries[countryIndex]);
+	    }
+	    $('#vmap').vectorMap('unhighlight',cc);
+	if(currentlyZoomed){
+	    $('#vmap').vectorMap('set', 'colors', getColors(currentRegionSelected));
+	} 
+}
 
 function zoomInOnContinent () {
-	$('#vmap').vectorMap('zoomIn');
-	document.getElementById('select-continent').style.display='none';
-	//document.getElementById("description-box").style.display = "block";
-	$('#description-box').fadeIn();
+	if(!currentlyZoomed){
+		currentlyZoomed = true;
+		$('#vmap').vectorMap('zoomIn');
+		document.getElementById('select-continent').style.display='none';
+		$('#description-box').fadeIn();
+	}
+}
+
+function displayBoxText (cc) {
+	var selectedRegion = countryMap[cc];
+	currentRegionSelected = selectedRegion;
+	if(selectedRegion === 'southAmerica')
+		selectedRegion = 'South America';
+	else if(selectedRegion === 'northAmerica')
+		selectedRegion = 'North America';
+	$('#text').text(selectedRegion);
+}
+
+function setRegionColors () {
+	$('#vmap').vectorMap('set', 'colors', getColors(currentRegionSelected));
 }

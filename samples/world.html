@@ -35,6 +35,8 @@
 			onRegionClick: function (element, code, region)
 			{
 				zoomInOnContinent ();
+				displayBoxText(code);
+				setRegionColors();
 			}
 		});
 		document.getElementById("description-box").style.display = "none";
@@ -47,16 +49,9 @@
 		<div id="select-continent" style="text-align:center;position:relative;bottom:30px;font-family:sans-serif;font-weight:bold;color:#666666;">Please select a region.</div>
 		
 		<!--Use this to display data-->
-		<div id="description-box" style="position:absolute;width:200px;height:300px;background-color:#fff;top:60px;left:380px;border:1px solid #e0e0e0;border-radius:5px;text-align:center;font-family:sans-serif;">
-			<h2>Europe</h2>
-			<hr>
-			<h3>Summer</h3>
-			Greece<br/>
-			Italy<br/>
-			Germany
-			<h3>Winter</h3>
-			Greece
-		</div>
+		<!--<div id="description-box" style="position:absolute;width:200px;height:300px;background-color:#fff;top:60px;left:380px;border:1px solid #e0e0e0;border-radius:5px;text-align:center;font-family:sans-serif;">
+			<span id="text">Initial Text</span>
+		</div>-->
 	</div>
   </body>
 </html>
