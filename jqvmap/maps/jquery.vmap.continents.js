@@ -245,17 +245,29 @@ function highlightRegionOfCountry (cc) {
 	      	$('#vmap').vectorMap('highlight',countries[countryIndex]);
 	    }
 	    //$('#vmap').vectorMap('highlight',cc);
+    } else {
+    	var region = countryMap[cc];
+    	if(region != currentRegionSelected){
+    		var countries = getRegion(cc).countries;
+		    for (countryIndex in countries){
+		      	$('#vmap').vectorMap('highlight',countries[countryIndex]);
+		    }
+    	}
     }
 }
 
 function unhighlightRegionOfCountry (cc) {
+	var countries = getRegion(cc).countries;
 	if(!currentlyZoomed){
-		var countries = getRegion(cc).countries;
 	    for (countryIndex in countries){
 	      	$('#vmap').vectorMap('unhighlight',countries[countryIndex]);
 	    }
 	    //$('#vmap').vectorMap('unhighlight',cc);
 	} else{
+		var region = countryMap[cc];
+		for (countryIndex in countries){
+	      	$('#vmap').vectorMap('unhighlight',countries[countryIndex]);
+	    }
 	    $('#vmap').vectorMap('set', 'colors', getColors(currentRegionSelected));
 	} 
 }
@@ -263,6 +275,7 @@ function unhighlightRegionOfCountry (cc) {
 function zoomInOnContinent () {
 	if(!currentlyZoomed){
 		currentlyZoomed = true;
+		// maybe try creating another zoomIn method that takes in parameters & call that method here instead
 		$('#vmap').vectorMap('zoomIn');
 		document.getElementById('select-continent').style.display='none';
 		$('#description-box').fadeIn();

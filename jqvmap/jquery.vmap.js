@@ -435,11 +435,16 @@
           map.highlight(code, path);
           //map.highlightRegionOfCountry(code);
         }
+        
         // this section shows the labels for the region hovered over
         if (params.showTooltip) {
           map.label.text(mapData.pathes[code].name);
           if(!currentlyZoomed){
-            var region = getRegion(code);;
+            var region = getRegion(code);
+            map.label.text (region["name"]);
+          }
+          if(countryMap[code] != currentRegionSelected){
+            var region = getRegion(code);
             map.label.text (region["name"]);
           }
           jQuery(params.container).trigger(labelShowEvent, [map.label, code]);
