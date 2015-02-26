@@ -439,11 +439,11 @@
         // this section shows the labels for the region hovered over
         if (params.showTooltip) {
           map.label.text(mapData.pathes[code].name);
-          if(!currentlyZoomed){
+          if(!currentlyZoomed){ // only in initial view
             var region = getRegion(code);
             map.label.text (region["name"]);
           }
-          if(countryMap[code] != currentRegionSelected){
+          if(countryMap[code] != currentRegionSelected){ // when a continent is selected
             var region = getRegion(code);
             map.label.text (region["name"]);
           }
@@ -488,6 +488,10 @@
 
     });
 
+    // use for loop to go through all the countries
+    // show label for all countries
+    // create variable labelPositions in sampledata for the positions of all countries
+    // left and top positions are taken from labelPositions
     if (params.showTooltip) {
       params.container.mousemove(function (e) {
         if (map.label.is(':visible')) {
@@ -807,7 +811,7 @@
     },
     
     /* Use this method for when user presses on a continent */
-    zoomIn: function () {
+    zoomIn: function (dX, dY,dS) {
       var map = this;
       var sliderDelta = (jQuery('#zoom').innerHeight() - 6 * 2 - 15 * 2 - 3 * 2 - 7 - 6) / (this.zoomMaxStep - this.zoomCurStep);
 
@@ -821,8 +825,8 @@
          * Change these variables based on continent selected. Change function to take in these parameters!
          * map.setScale sets the zoom level
          */
-        map.transX -= (map.width / map.scale - map.width / (map.scale * map.zoomStep)) / 2;
-        map.transY -= (map.height / map.scale - map.height / (map.scale * map.zoomStep)) / 2;
+        map.transX -= (map.width / map.scale - map.width / (map.scale * map.zoomStep)) / 2+dX;
+        map.transY -= (map.height / map.scale - map.height / (map.scale * map.zoomStep)) / 2+dY;
         map.setScale(map.scale * map.zoomStep);
         map.zoomCurStep++;
 
@@ -832,7 +836,7 @@
       }
     },
     
-    zoomOut: function () {
+    zoomOut: function (dX,dY,dS) {
       var map = this;
       var sliderDelta = (jQuery('#zoom').innerHeight() - 6 * 2 - 15 * 2 - 3 * 2 - 7 - 6) / (this.zoomMaxStep - this.zoomCurStep);
 
@@ -841,8 +845,8 @@
         var curTransY = map.transY;
         var curScale = map.scale;
 
-        map.transX += (map.width / (map.scale / map.zoomStep) - map.width / map.scale) / 2;
-        map.transY += (map.height / (map.scale / map.zoomStep) - map.height / map.scale) / 2;
+        map.transX += (map.width / (map.scale / map.zoomStep) - map.width / map.scale) / 2-dX;
+        map.transY += (map.height / (map.scale / map.zoomStep) - map.height / map.scale) / 2-dY;
         map.setScale(map.scale / map.zoomStep);
         map.zoomCurStep--;
 

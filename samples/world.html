@@ -14,6 +14,8 @@
 	
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
+		var isZoom=false;
+		var dX,dY,dS;
 		jQuery('#vmap').vectorMap({
 			map: 'world_en',
 			backgroundColor: '#ffffff',
@@ -34,7 +36,34 @@
 			},
 			onRegionClick: function (element, code, region)
 			{
-				zoomInOnContinent ();
+				if(!isZoom){
+					if(countryMap[code]=="Asia"){
+						dX=280;dY=-100;dS=1.3;
+					}
+					if(countryMap[code]=="Africa"){
+						dX=150;dY=150;dS=1.7;
+					}
+					if(countryMap[code]=="Europe"){
+						dX=170;dY=50;dS=2.4;
+					}
+					if(countryMap[code]=="northAmerica"){
+						dX=-200;dY=-200;dS=1.5;
+					}
+					if(countryMap[code]=="australia"){
+						dX=470;dY=300;dS=2;
+					}
+					if(countryMap[code]=="southAmerica"){
+						dX=-200;dY=300;dS=1.5;
+					}
+					zoomInOnContinent(dX,dY,dS);
+					isZoom=true;
+				}
+				else{
+					zoomOutOnContinent(dX,dY,dS);
+					isZoom=false;
+				}
+				
+				// zoomInOnContinent ();
 				displayBoxText(code);
 				setRegionColors();
 			}
@@ -49,9 +78,9 @@
 		<div id="select-continent" style="text-align:center;position:relative;bottom:30px;font-family:sans-serif;font-weight:bold;color:#666666;">Please select a region.</div>
 		
 		<!--Use this to display data-->
-		<!--<div id="description-box" style="position:absolute;width:200px;height:300px;background-color:#fff;top:60px;left:380px;border:1px solid #e0e0e0;text-align:center;font-family:sans-serif;">
+		<div id="description-box" style="position:absolute;width:200px;height:300px;background-color:#990000;top:60px;left:380px;border:3px solid #6a0000;text-align:center;font-family:sans-serif;color:#fff">
 			<span id="text">Initial Text</span>
-		</div>-->
+		</div>
 	</div>
   </body>
 </html>

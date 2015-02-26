@@ -180,14 +180,14 @@ var countryMap = {
 	"lc":"northAmerica",
 	"tt":"northAmerica",
 
-	"au":"australia",
-	"nz":"australia",
-	"fj":"australia",
-	"sb":"australia",
-	"pg":"australia",
-	"vu":"australia",
-	"nc":"australia",
-	"pf":"australia"
+	"au":"Australia",
+	"nz":"Australia",
+	"fj":"Australia",
+	"sb":"Australia",
+	"pg":"Australia",
+	"vu":"Australia",
+	"nc":"Australia",
+	"pf":"Australia"
 };
 var regionMap = {
 	"Africa" : {
@@ -263,6 +263,7 @@ function unhighlightRegionOfCountry (cc) {
 	      	$('#vmap').vectorMap('unhighlight',countries[countryIndex]);
 	    }
 	    //$('#vmap').vectorMap('unhighlight',cc);
+	    $('#vmap').vectorMap('set', 'colors', test);
 	} else{
 		var region = countryMap[cc];
 		for (countryIndex in countries){
@@ -272,14 +273,24 @@ function unhighlightRegionOfCountry (cc) {
 	} 
 }
 
-function zoomInOnContinent () {
-	if(!currentlyZoomed){
-		currentlyZoomed = true;
-		// maybe try creating another zoomIn method that takes in parameters & call that method here instead
-		$('#vmap').vectorMap('zoomIn');
-		document.getElementById('select-continent').style.display='none';
-		$('#description-box').fadeIn();
-	}
+function zoomInOnContinent (dX,dY,dS) {
+	// if(!currentlyZoomed){
+	// 	currentlyZoomed = true;
+	// 	// maybe try creating another zoomIn method that takes in parameters & call that method here instead
+	// 	$('#vmap').vectorMap('zoomIn');
+	// 	document.getElementById('select-continent').style.display='none';
+	// }
+	currentlyZoomed = true;
+	$('#vmap').vectorMap('zoomIn',dX,dY,dS);
+	document.getElementById('select-continent').style.display='none';
+	$('#description-box').fadeIn();
+}
+
+function zoomOutOnContinent (dX,dY,dS) {
+	currentlyZoomed = false;
+	$('#description-box').fadeOut();
+	$('#vmap').vectorMap('zoomOut',dX,dY,dS);
+	document.getElementById('select-continent').style.display='block';
 }
 
 function displayBoxText (cc) {
@@ -293,5 +304,8 @@ function displayBoxText (cc) {
 }
 
 function setRegionColors () {
-	$('#vmap').vectorMap('set', 'colors', getColors(currentRegionSelected));
+	if (currentlyZoomed)
+		$('#vmap').vectorMap('set', 'colors', getColors(currentRegionSelected));
+	else
+		$('#vmap').vectorMap('set', 'colors', test);
 }
