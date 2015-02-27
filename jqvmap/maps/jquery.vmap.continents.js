@@ -210,7 +210,7 @@ var regionMap = {
 		"countries" : ["ca", "gl", "us", "bz", "cr", "sv", "gt", "hn", "mx", "ni", "pa", "bs", "dm", "ag", "ds", "bb", "cu", "dn", "do", "gd", "ht", "jm", "kn", "lc", "tt"],
 		"name" : "North America"
 	},
-	"australia" :{
+	"Australia" :{
 		"countries" : ["au", "nz", "fj", "sb", "pg", "vu", "nc", "pf"],
 		"name" : "Australia",
 	},
@@ -218,6 +218,9 @@ var regionMap = {
 
 var currentlyZoomed = false;
 var currentRegionSelected;
+var countrySelected = false;
+var currentCountrySelected;
+var selectedCode;
 
 function getCountriesInRegion(cc) {
 	for (var regionKey in regionMap)
@@ -283,7 +286,7 @@ function zoomInOnContinent (dX,dY,dS) {
 	currentlyZoomed = true;
 	$('#vmap').vectorMap('zoomIn',dX,dY,dS);
 	document.getElementById('select-continent').style.display='none';
-	$('#description-box').fadeIn();
+	//$('#description-box').fadeIn();
 }
 
 function zoomOutOnContinent (dX,dY,dS) {
@@ -293,14 +296,19 @@ function zoomOutOnContinent (dX,dY,dS) {
 	document.getElementById('select-continent').style.display='block';
 }
 
-function displayBoxText (cc) {
+function setRegion(cc){
 	var selectedRegion = countryMap[cc];
 	currentRegionSelected = selectedRegion;
-	if(selectedRegion === 'southAmerica')
-		selectedRegion = 'South America';
-	else if(selectedRegion === 'northAmerica')
-		selectedRegion = 'North America';
-	$('#text').text(selectedRegion);
+}
+
+function displayBoxText (cc) {
+	if(countrySelected){
+		var selectedRegion = countryMap[selectedCode];
+		$('#description-box').fadeIn();
+
+		if(selectedRegion == currentRegionSelected)
+			$('#text').text(currentCountrySelected);
+	}
 }
 
 function setRegionColors () {

@@ -439,6 +439,7 @@
         // this section shows the labels for the region hovered over
         if (params.showTooltip) {
           map.label.text(mapData.pathes[code].name);
+          currentCountrySelected = mapData.pathes[code].name;
           if(!currentlyZoomed){ // only in initial view
             var region = getRegion(code);
             map.label.text (region["name"]);
@@ -827,7 +828,7 @@
          */
         map.transX -= (map.width / map.scale - map.width / (map.scale * map.zoomStep)) / 2+dX;
         map.transY -= (map.height / map.scale - map.height / (map.scale * map.zoomStep)) / 2+dY;
-        map.setScale(map.scale * map.zoomStep);
+        map.setScale(map.scale * map.zoomStep * dS);
         map.zoomCurStep++;
 
         jQuery('#zoomSlider').css('top', parseInt(jQuery('#zoomSlider').css('top'), 10) - sliderDelta);
@@ -847,7 +848,7 @@
 
         map.transX += (map.width / (map.scale / map.zoomStep) - map.width / map.scale) / 2-dX;
         map.transY += (map.height / (map.scale / map.zoomStep) - map.height / map.scale) / 2-dY;
-        map.setScale(map.scale / map.zoomStep);
+        map.setScale(map.scale / map.zoomStep / dS);
         map.zoomCurStep--;
 
         jQuery('#zoomSlider').css('top', parseInt(jQuery('#zoomSlider').css('top'), 10) + sliderDelta);
