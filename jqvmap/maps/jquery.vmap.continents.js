@@ -285,7 +285,7 @@ function zoomInOnContinent (dX,dY,dS) {
 	// }
 	currentlyZoomed = true;
 	$('#vmap').vectorMap('zoomIn',dX,dY,dS);
-	document.getElementById('select-continent').style.display='none';
+	document.getElementById('directions').style.display='none';
 	//$('#description-box').fadeIn();
 }
 
@@ -293,7 +293,7 @@ function zoomOutOnContinent (dX,dY,dS) {
 	currentlyZoomed = false;
 	$('#description-box').fadeOut();
 	$('#vmap').vectorMap('zoomOut',dX,dY,dS);
-	document.getElementById('select-continent').style.display='block';
+	document.getElementById('directions').style.display='block';
 }
 
 function setRegion(cc){
@@ -304,10 +304,17 @@ function setRegion(cc){
 function displayBoxText (cc) {
 	if(countrySelected){
 		var selectedRegion = countryMap[selectedCode];
-		$('#description-box').fadeIn();
 
-		if(selectedRegion == currentRegionSelected)
+		if(selectedRegion == currentRegionSelected){
+			if(currentRegionSelected=='Europe' || currentRegionSelected=='Asia' || currentRegionSelected=='Australia')
+				$( "div#description-box" ).toggleClass( "left" );
+			else
+				$( "div#description-box" ).toggleClass( "right" );
+			$('#description-box').fadeIn();
 			$('#text').text(currentCountrySelected);
+		}else{
+			$('#description-box').fadeOut();
+		}
 	}
 }
 

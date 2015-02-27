@@ -74,14 +74,54 @@
 		document.getElementById("description-box").style.display = "none";
 	});
 	</script>
+
+	<style type="text/css">
+		#vmap {
+			width: 700px; 
+			height: 400px;
+			border:1px solid #000;
+		}
+
+		#directions {
+			text-align:center;
+			position:relative;
+			bottom:30px;
+			font-family:sans-serif;
+			font-weight:bold;
+			color:#666666;
+		}
+
+		#description-box {
+			position:absolute;
+			width:200px;
+			height:350px;
+			background-color:#fff;
+			border:4px solid #990000;
+			text-align:center;
+			font-family:sans-serif;
+			color:#990000;
+			border-radius:10px;
+			box-shadow: 0px 0px 15px #888888;
+		}
+
+		.left {
+			top:30px;
+			left:30px;
+		}
+
+		.right {
+			top:30px;
+			left:480px;
+		}
+	</style>
   </head>
   <body>
   	<div id="map-holder" style="width: 600px; height: 400px;">
-		<div id="vmap" style="width: 700px; height: 400px;border:1px solid #000;"></div>
-		<div id="select-continent" style="text-align:center;position:relative;bottom:30px;font-family:sans-serif;font-weight:bold;color:#666666;">Please select a region.</div>
+		<div id="vmap"></div>
+		<div id="directions">Please select a region.</div>
 		
 		<!--Use this to display data-->
-		<div id="description-box" style="position:absolute;width:200px;height:300px;background-color:#fff;top:60px;left:380px;border:4px solid #990000;text-align:center;font-family:sans-serif;color:#990000;border-radius:10px;box-shadow: 0px 0px 15px #888888;">
+		<div id="description-box">
 			<span id="text">Initial Text</span>
 		</div>
 	</div>
