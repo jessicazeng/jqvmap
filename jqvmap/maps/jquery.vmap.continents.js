@@ -306,12 +306,66 @@ function displayBoxText (cc) {
 		var selectedRegion = countryMap[selectedCode];
 
 		if(selectedRegion == currentRegionSelected){
+			if($( "div#description-box" ).hasClass("left"))
+				$( "div#description-box" ).removeClass( "left" );
+			else if($( "div#description-box" ).hasClass("right"))
+				$( "div#description-box" ).removeClass( "right" );
+
 			if(currentRegionSelected=='Europe' || currentRegionSelected=='Asia' || currentRegionSelected=='Australia')
 				$( "div#description-box" ).toggleClass( "left" );
 			else
 				$( "div#description-box" ).toggleClass( "right" );
+
 			$('#description-box').fadeIn();
-			$('#text').text(currentCountrySelected);
+			$('#description-box').append('<div id="modal-header">' + currentCountrySelected + '</div>');
+
+			if(currentRegionSelected == 'Africa'){
+				var terms = AfricaPrograms[selectedCode];
+				if(terms == null){
+					$('#description-box').append('<div class="term-programs">We currently do not offer any programs in this country.</div>');
+				}else{
+					if(terms.Summer != null){
+						$('#description-box').append('<div class="term-programs"><div class="subheader">Summer</div>');
+						var programInfo = terms.Summer;
+						programInfo.forEach(function (value, i) {
+						    if(i%2 == 0)
+						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+						});
+						$('#description-box').append('</div>');
+					} else if(terms.yrsem != null){
+						$('#description-box').append('<div class="term-programs"><div class="subheader">Year/Semester</div>');
+						var programInfo = terms.yrsem;
+						programInfo.forEach(function (value, i) {
+						    if(i%2 == 0)
+						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+						});
+						$('#description-box').append('</div>');
+					}
+				}
+			} else if(currentRegionSelected == 'Europe'){
+				var terms = EuropePrograms[selectedCode];
+				if(terms == null){
+					$('#description-box').append('<div class="term-programs">We currently do not offer any programs in this country.</div>');
+				}else{
+					if(terms.Summer != null){
+						$('#description-box').append('<div class="term-programs"><div class="subheader">Summer</div>');
+						var programInfo = terms.Summer;
+						programInfo.forEach(function (value, i) {
+						    if(i%2 == 0)
+						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+						});
+						$('#description-box').append('</div>');
+					} else if(terms.yrsem != null){
+						$('#description-box').append('<div class="term-programs"><div class="subheader">Year/Semester</div>');
+						var programInfo = terms.yrsem;
+						programInfo.forEach(function (value, i) {
+						    if(i%2 == 0)
+						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+						});
+						$('#description-box').append('</div>');
+					}
+				}
+			}
 		}else{
 			$('#description-box').fadeOut();
 		}
