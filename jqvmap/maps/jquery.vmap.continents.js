@@ -319,52 +319,50 @@ function displayBoxText (cc) {
 			$('#description-box').fadeIn();
 			$('#description-box').append('<div id="modal-header">' + currentCountrySelected + '</div>');
 
-			if(currentRegionSelected == 'Africa'){
+			if(currentRegionSelected == 'Africa')
 				var terms = AfricaPrograms[selectedCode];
-				if(terms == null){
-					$('#description-box').append('<div class="term-programs">We currently do not offer any programs in this country.</div>');
-				}else{
-					if(terms.Summer != null){
-						$('#description-box').append('<div class="term-programs"><div class="subheader">Summer</div>');
-						var programInfo = terms.Summer;
-						programInfo.forEach(function (value, i) {
-						    if(i%2 == 0)
-						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
-						});
-						$('#description-box').append('</div>');
-					} else if(terms.yrsem != null){
-						$('#description-box').append('<div class="term-programs"><div class="subheader">Year/Semester</div>');
-						var programInfo = terms.yrsem;
-						programInfo.forEach(function (value, i) {
-						    if(i%2 == 0)
-						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
-						});
-						$('#description-box').append('</div>');
-					}
-				}
-			} else if(currentRegionSelected == 'Europe'){
+			else if(currentRegionSelected == 'Europe')
 				var terms = EuropePrograms[selectedCode];
-				if(terms == null){
-					$('#description-box').append('<div class="term-programs">We currently do not offer any programs in this country.</div>');
-				}else{
-					if(terms.Summer != null){
-						$('#description-box').append('<div class="term-programs"><div class="subheader">Summer</div>');
-						var programInfo = terms.Summer;
-						programInfo.forEach(function (value, i) {
-						    if(i%2 == 0)
-						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
-						});
-						$('#description-box').append('</div>');
-					} else if(terms.yrsem != null){
-						$('#description-box').append('<div class="term-programs"><div class="subheader">Year/Semester</div>');
-						var programInfo = terms.yrsem;
-						programInfo.forEach(function (value, i) {
-						    if(i%2 == 0)
-						    	$('#description-box').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
-						});
-						$('#description-box').append('</div>');
-					}
+			else if(currentRegionSelected == 'Asia')
+				var terms = AsiaPrograms[selectedCode];
+			else if(currentRegionSelected == 'Australia')
+				var terms = AustraliaPrograms[selectedCode];
+			else if(currentRegionSelected == 'northAmerica')
+				var terms = NAPrograms[selectedCode];
+			else if(currentRegionSelected == 'southAmerica')
+				var terms = SAPrograms[selectedCode];
+
+			$('#description-box').append('<div id="program-holder"></div>');
+			if(terms == null){
+				$('#program-holder').append('<div class="term-programs">We currently do not offer any programs in this country.</div>');
+			}else{
+				if(terms.yrsem != null){
+					$('#program-holder').append('<div class="term-programs"><div class="subheader">Year/Semester</div>');
+					var programInfo = terms.yrsem;
+					programInfo.forEach(function (value, i) {
+					    if(i%2 == 0)
+					    	$('#program-holder').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+					});
+					$('#program-holder').append('</div>');
 				}
+				if(terms.Summer != null){
+					$('#program-holder').append('<div class="term-programs"><div class="subheader">Summer</div>');
+					var programInfo = terms.Summer;
+					programInfo.forEach(function (value, i) {
+					    if(i%2 == 0)
+					    	$('#program-holder').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+					});
+					$('#program-holder').append('</div>');
+				} 
+				if(terms.Winter != null){
+					$('#program-holder').append('<div class="term-programs"><div class="subheader">Winter</div>');
+					var programInfo = terms.Winter;
+					programInfo.forEach(function (value, i) {
+					    if(i%2 == 0)
+					    	$('#program-holder').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+					});
+					$('#program-holder').append('</div>');
+				} 
 			}
 		}else{
 			$('#description-box').fadeOut();
