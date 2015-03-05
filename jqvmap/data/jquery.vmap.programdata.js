@@ -44,7 +44,7 @@ var EuropePrograms = {
 		"yrsem": ["University of Oslo", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/norway/oslo"]
 	},
 	"es": {
-		"yrsem": ["Universidad Autonoma de Madrid", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/uam", "Universidad de Alcala", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/alcala", "Universidad de las Palmas de Gran Canaria", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/ulpgc", "Universidad de Leon", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/leon", ""],
+		"yrsem": ["Universidad Autonoma de Madrid", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/uam", "Universidad de Alcala", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/alcala", "Universidad de las Palmas de Gran Canaria", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/ulpgc", "Universidad de Leon", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/spain/leon"],
 		"Summer": ["Universidad de Alcala", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/summer/spain/alcala"]
 	},
 	"se": {

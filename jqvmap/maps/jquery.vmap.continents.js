@@ -341,7 +341,7 @@ function displayBoxText (cc) {
 					var programInfo = terms.yrsem;
 					programInfo.forEach(function (value, i) {
 					    if(i%2 == 0)
-					    	$('#program-holder').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name">' + value + '</div></div></a>');
 					});
 					$('#program-holder').append('</div>');
 				}
@@ -350,7 +350,7 @@ function displayBoxText (cc) {
 					var programInfo = terms.Summer;
 					programInfo.forEach(function (value, i) {
 					    if(i%2 == 0)
-					    	$('#program-holder').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name">' + value + '</div></div></a>');
 					});
 					$('#program-holder').append('</div>');
 				} 
@@ -359,7 +359,7 @@ function displayBoxText (cc) {
 					var programInfo = terms.Winter;
 					programInfo.forEach(function (value, i) {
 					    if(i%2 == 0)
-					    	$('#program-holder').append('<div class="programs"><a href=' + programInfo[i+1] + '>' + value + '</a></div>');
+					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name">' + value + '</div></div></a>');
 					});
 					$('#program-holder').append('</div>');
 				} 
