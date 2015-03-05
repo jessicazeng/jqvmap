@@ -317,7 +317,7 @@ function displayBoxText (cc) {
 				$( "div#description-box" ).toggleClass( "right" );
 
 			$('#description-box').fadeIn();
-			$('#description-box').append('<div id="modal-header">' + currentCountrySelected + '</div>');
+			$('#description-box').append('<div class="center-text" id="modal-header">' + currentCountrySelected + '</div>');
 
 			if(currentRegionSelected == 'Africa')
 				var terms = AfricaPrograms[selectedCode];
@@ -334,32 +334,32 @@ function displayBoxText (cc) {
 
 			$('#description-box').append('<div id="program-holder"></div>');
 			if(terms == null){
-				$('#program-holder').append('<div class="term-programs">We currently do not offer any programs in this country.</div>');
+				$('#program-holder').append('<div class="term-programs center-text">We currently do not offer any programs in this country.</div>');
 			}else{
 				if(terms.yrsem != null){
-					$('#program-holder').append('<div class="term-programs"><div class="subheader">Year/Semester</div>');
+					$('#program-holder').append('<div class="term-programs"><div class="subheader center-text">Year/Semester</div>');
 					var programInfo = terms.yrsem;
 					programInfo.forEach(function (value, i) {
 					    if(i%2 == 0)
-					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name">' + value + '</div></div></a>');
+					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs "><img src="../samples/images/flagimg.png"><div class="program-name center-left">' + value + '</div></div></a>');
 					});
 					$('#program-holder').append('</div>');
 				}
 				if(terms.Summer != null){
-					$('#program-holder').append('<div class="term-programs"><div class="subheader">Summer</div>');
+					$('#program-holder').append('<div class="term-programs"><div class="subheader center-text">Summer</div>');
 					var programInfo = terms.Summer;
 					programInfo.forEach(function (value, i) {
 					    if(i%2 == 0)
-					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name">' + value + '</div></div></a>');
+					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name center-left">' + value + '</div></div></a>');
 					});
 					$('#program-holder').append('</div>');
 				} 
 				if(terms.Winter != null){
-					$('#program-holder').append('<div class="term-programs"><div class="subheader">Winter</div>');
+					$('#program-holder').append('<div class="term-programs"><div class="subheader center-text">Winter</div>');
 					var programInfo = terms.Winter;
 					programInfo.forEach(function (value, i) {
 					    if(i%2 == 0)
-					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name">' + value + '</div></div></a>');
+					    	$('#program-holder').append('<a class="program-link" href=' + programInfo[i+1] + '><div class="programs"><img src="../samples/images/flagimg.png"><div class="program-name center-left">' + value + '</div></div></a>');
 					});
 					$('#program-holder').append('</div>');
 				} 
