@@ -247,7 +247,6 @@ function highlightRegionOfCountry (cc) {
 	    for (countryIndex in countries){
 	      	$('#vmap').vectorMap('highlight',countries[countryIndex]);
 	    }
-	    //$('#vmap').vectorMap('highlight',cc);
     } else {
     	var region = countryMap[cc];
     	if(region != currentRegionSelected){
@@ -265,7 +264,6 @@ function unhighlightRegionOfCountry (cc) {
 	    for (countryIndex in countries){
 	      	$('#vmap').vectorMap('unhighlight',countries[countryIndex]);
 	    }
-	    //$('#vmap').vectorMap('unhighlight',cc);
 	    $('#vmap').vectorMap('set', 'colors', test);
 	} else{
 		var region = countryMap[cc];
@@ -277,15 +275,9 @@ function unhighlightRegionOfCountry (cc) {
 }
 
 function zoomInOnContinent (dX,dY,dS) {
-	// if(!currentlyZoomed){
-	// 	currentlyZoomed = true;
-	// 	// maybe try creating another zoomIn method that takes in parameters & call that method here instead
-	// 	$('#vmap').vectorMap('zoomIn');
-	// 	document.getElementById('select-continent').style.display='none';
-	// }
 	currentlyZoomed = true;
 	$('#vmap').vectorMap('zoomIn',dX,dY,dS);
-	//$('#description-box').fadeIn();
+	document.getElementById('backButton').style.display='block';
 }
 
 function zoomOutOnContinent (dX,dY,dS) {
@@ -293,6 +285,8 @@ function zoomOutOnContinent (dX,dY,dS) {
 	$('#description-box').fadeOut();
 	$('#vmap').vectorMap('zoomOut',dX,dY,dS);
 	document.getElementById('directions').style.display='block';
+	document.getElementById('backButton').style.display='none';
+	$('#directions').text('Please select a continent');
 }
 
 function setRegion(cc){
@@ -306,7 +300,7 @@ function displayBoxText (cc) {
 
 		if(selectedRegion == currentRegionSelected){
 			document.getElementById('directions').style.display='none';
-			
+
 			if($( "div#description-box" ).hasClass("left"))
 				$( "div#description-box" ).removeClass( "left" );
 			else if($( "div#description-box" ).hasClass("right"))
