@@ -285,7 +285,6 @@ function zoomInOnContinent (dX,dY,dS) {
 	// }
 	currentlyZoomed = true;
 	$('#vmap').vectorMap('zoomIn',dX,dY,dS);
-	document.getElementById('directions').style.display='none';
 	//$('#description-box').fadeIn();
 }
 
@@ -306,6 +305,8 @@ function displayBoxText (cc) {
 		var selectedRegion = countryMap[selectedCode];
 
 		if(selectedRegion == currentRegionSelected){
+			document.getElementById('directions').style.display='none';
+			
 			if($( "div#description-box" ).hasClass("left"))
 				$( "div#description-box" ).removeClass( "left" );
 			else if($( "div#description-box" ).hasClass("right"))

@@ -77,6 +77,9 @@ var AsiaPrograms = {
 	"ru" : {
 		"yrsem": ["St. Petersburg State University", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/russia/stpete"],
 		"Summer": ["Advanced Russian Language Institute", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/summer/russia/acli", "4 Week International Summer School", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/summer/russia/stpete"]
+	},
+	"my" : {
+		"yrsem": ["Singapore - Nanyang Technological University", "http://www.stonybrook.edu/commcms/studyabroad/outgoing/programs/yearsemester/singapore/ntu"]
 	}
 };
 

@@ -391,7 +391,7 @@
     this.canvas = new VectorCanvas(this.width, this.height, params);
     params.container.append(this.canvas.canvas);
 
-    this.makeDraggable();
+    //this.makeDraggable();
 
     this.rootGroup = this.canvas.createGroup(true);
 
