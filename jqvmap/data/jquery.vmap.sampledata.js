@@ -1376,7 +1376,7 @@ var australiaOnClick = {
 
 	/* Australia */
 	"au":"#ffcb08",
-	"nz":"#d3d3d3",
+	"nz":"#f8a900",
 	"fj":"#d3d3d3",
 	"sb":"#d3d3d3",
 	"pg":"#d3d3d3",
@@ -1396,6 +1396,6 @@ function getColors(region){
 		return southAmericaOnClick;
 	else if(region === 'northAmerica')
 		return northAmericaOnClick;
-	else if(region === 'australia')
+	else if(region === 'Australia')
 		return australiaOnClick;
 }
